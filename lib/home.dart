@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
@@ -39,30 +38,26 @@ class _HomeState extends State<Home> {
                       style: myTextStyle,
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
                           children: [
                             Text('Player X', style: myTextStyle),
-                            Text(xScore.toString(),
-                                style: myTextStyle),
+                            Text(xScore.toString(), style: myTextStyle),
                           ],
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
+                        SizedBox(width: 20,),
+                        Column(
                           children: [
                             Text('Player O', style: myTextStyle),
-                            Text(oScore.toString(),
-                                style: myTextStyle),
+                            Text(oScore.toString(), style: myTextStyle),
                           ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -79,7 +74,7 @@ class _HomeState extends State<Home> {
                 return GestureDetector(
                   onTap: () {
                     setState(() {
-                      tapped(index,context); // Pass context here
+                      tapped(index, context); // Pass context here
                     });
                   },
                   child: Container(
@@ -199,15 +194,12 @@ class _HomeState extends State<Home> {
     );
   }
 
-
   void clearBoard() {
     for (int i = 0; i < 9; i++) {
       displayEx0h[i] = '';
     }
     filledCells = 0;
   }
-
-
 
   void clearScore() {
     oScore = 0;
@@ -221,6 +213,7 @@ class _HomeState extends State<Home> {
       xScore += 1;
     }
   }
+
   void showDrawDialog(BuildContext context) {
     showDialog(
       barrierDismissible: false,
@@ -230,9 +223,9 @@ class _HomeState extends State<Home> {
           actions: [
             TextButton(
               onPressed: () {
-              setState(() {
-                clearBoard();
-              });
+                setState(() {
+                  clearBoard();
+                });
                 Navigator.of(context).pop();
               },
               child: Text('Play Again!'),
@@ -243,8 +236,4 @@ class _HomeState extends State<Home> {
       },
     );
   }
-
 }
-
-
-
